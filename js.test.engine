@@ -1,8 +1,14 @@
 #!/usr/bin/rhino
 
+relative_path="";
+
 function assert(expr) {
   if(!expr)
     throw "AssertionFailed"
+}
+
+function load_test_file(filename) {
+  load(relative_path + "/" + filename);
 }
 
 function RhinoTestEngine(test_suite, suite_name) {
@@ -39,5 +45,10 @@ function RhinoTestEngine(test_suite, suite_name) {
 
 if(arguments.length < 1)
   quit(0);
+
+if(arguments.length < 2)
+  arguments.append(".");
+
+relative_path = arguments[1];
 
 load(arguments[0]);

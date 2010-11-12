@@ -7,7 +7,8 @@ run_test()
 {
   filename=$1
   echo -n "${filename} : "
-  $rhino $engine $filename
+  relative=`dirname $filename`
+  $rhino $engine $filename $relative
   return $?
 }
 
