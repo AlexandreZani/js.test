@@ -1,0 +1,43 @@
+#!/usr/bin/rhino
+
+function assert(expr) {
+  if(!expr)
+    throw "AssertionFailed"
+}
+
+function RhinoTestEngine(test_suite, suite_name) {
+  errors = 0;
+  print(suite_name);
+
+  for(test in test_suite) {
+    failed = false;
+
+    if(typeof(test_suite[test]) != "function")
+      continue;
+
+    if(test.substring(0, 5) != "test_")
+      continue;
+
+
+    try {
+      test_suite[test]();
+    } catch(exception) {
+      failed = true;
+      except_str = exception;
+    }
+
+    if(failed) {
+      print("  " + test + " FAILED! with: " + except_str);
+      errors += 1;
+    } else {
+      print("  " + test + " PASSED");
+    }
+  }
+
+  quit(errors);
+}
+
+if(arguments.length < 1)
+  quit(0);
+
+load(arguments[0]);

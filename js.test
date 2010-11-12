@@ -1,0 +1,48 @@
+#!/bin/sh
+
+rhino="rhino"
+engine="$0.engine"
+
+run_test()
+{
+  filename=$1
+  echo -n "${filename} : "
+  $rhino $engine $filename
+  return $?
+}
+
+run_all_tests()
+{
+  start_path="$1"
+  all_files=`find $start_path -name "test_*"`
+  failed=0
+
+  for filename in `echo $all_files`
+  do
+    if grep RhinoTestEngine $filename > /dev/null 2>&1
+    then
+      run_test $filename
+      failed=`expr $failed + $?`
+      echo
+    fi
+  done
+
+  echo "$failed tests failed."
+  exit $failed
+}
+
+filename=$1
+
+
+if [ ! $filename ]
+then
+  filename='.'
+fi
+
+if [ -f $filename ]
+then
+  run_test $filename
+else
+  run_all_tests $filename
+fi
+
