@@ -1,0 +1,25 @@
+Prerequisites
+=============
+
+Before using js.test you will need to have rhino installed.
+
+Installation
+============
+
+In order to install js.test, pull the repo from git:
+  
+  $ git://github.com/AlexandreZani/js.test.git
+
+Then run 'make install'
+
+  $ cd js.test
+  $ make install
+
+Basic Usage
+===========
+
+'js.test' will search the current directory subtree for
+test suites and run them.
+
+'js.test foo' will run the test suites contained in file
+foo.
