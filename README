@@ -8,7 +8,7 @@ Installation
 
 In order to install js.test, pull the repo from git:
   
-  $ git://github.com/AlexandreZani/js.test.git
+  $ git clone git://github.com/AlexandreZani/js.test.git
 
 Then run 'make install'
 
