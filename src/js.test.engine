@@ -23,6 +23,11 @@ function assert(expr) {
     throw "AssertionFailed"
 }
 
+function assertEquals(expected, actual) {
+  if(expected != actual)
+    throw "AssertionFailed " + expected + " != " + actual;
+}
+
 function load_test_file(filename) {
   load(relative_path + "/" + filename);
 }

@@ -23,3 +23,9 @@ test suites and run them.
 
 'js.test foo' will run the test suites contained in file
 foo.
+
+Sample
+======
+
+$ cd samples
+$ js.test
